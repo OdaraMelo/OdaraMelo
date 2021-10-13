@@ -1,6 +1,6 @@
 - 👋 Hi, I’m @OdaraMelo 
 - 👀 Estou interessado em  dados
-- 🌱 Atualmente estou aprendendo  python
+- 🌱 Atualmente estou aprendendo  a  programar
 - 💞️ I’m looking to collaborate on  projetos
 - 📫 How to reach me  odaramoa@gmail.com
 
