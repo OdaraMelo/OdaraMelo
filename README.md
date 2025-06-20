@@ -1,6 +1,5 @@
 - 👋 Hi, I’m @OdaraRamoa 
-- 👀 Estou interessado em  dados
-- 🌱 Atualmente estou aprendendo  a  programar
+- 👀 Estou interessado em machine learning
 - 💞️ I’m looking to collaborate on  projetos
 - 📫 How to reach me  odaramoa@gmail.com
 
