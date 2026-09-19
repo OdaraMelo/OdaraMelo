@@ -8,7 +8,8 @@
 - **Instagram:** @notelagosservice (153 posts · 1.733 seguidores · conta comercial · WhatsApp Business verificado)
 - **Telefone/WhatsApp:** (22) 99238-5666
 - **E-mail:** notelagosservice@gmail.com
-- **Atuação:** Assistência Técnica desde 1998
+- **Atuação:** experiência desde 1998 (Rio de Janeiro); atende em **Cabo Frio desde 2021**. Não usar "Cabo Frio desde 1998".
+- **Mídia:** no Instagram há **apenas vídeos** (sem fotos) — para imagens, extrair frame de vídeo (print).
 - **Marca:** logo do lobo de circuito, preto + azul-elétrico (cyan)
 
 ## Termo correto
