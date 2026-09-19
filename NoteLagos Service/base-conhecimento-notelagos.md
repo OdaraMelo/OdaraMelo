@@ -11,9 +11,13 @@
 - **Atuação:** Assistência Técnica desde 1998
 - **Marca:** logo do lobo de circuito, preto + azul-elétrico (cyan)
 
+## Termo correto
+- Usar **microeletrônica** (ele solda, refaz trilha e reconstrói circuito). "Microssoldagem" é só um dos reparos — não usar como guarda-chuva.
+- No posicionamento público, priorizar **placa de vídeo** em vez de "console".
+
 ## Especialidades
-- **Carro-chefe:** reparos avançados de **placa-mãe de Notebooks e MacBooks** (microssoldagem).
-- **Também:** placa de vídeo (PC Gamer), consoles (PS4, PS5, Xbox), projetores (Datashow).
+- **Carro-chefe:** reparos avançados de **placa-mãe de Notebooks e MacBooks** (microeletrônica).
+- **Também:** placa de vídeo (PC Gamer), projetores (Datashow). (Consoles ele faz, mas fora do destaque público.)
 - Reparo de **carcaça com resina**, reparo de **teclado**.
 - Software: Windows 10/11, macOS, Pacote Office; upgrades de SSD/RAM.
 - Venda de notebooks/PCs usados "100% revisados".
@@ -43,4 +47,15 @@
 - **Endereço:** Rua Nicanor Pereira Couto, nº 961, Cobertura, Vila Nova, Cabo Frio - RJ, CEP 28907-390.
 - **Entrada:** portaria ao lado do salão Natural dos Cachos (prédio em frente às Lojas Americanas). Interfone: Notelagos.
 - **Horário ao público:** Seg–Sex 09:00–12:00 e 13:00–16:00. Feriados não trabalha. Sábados e fora do horário: bancada, sem atendimento ao público.
-- **Perfil no Google:** cadastrado desde jan/2025. Categoria e status de verificação **(confirmar no painel)**.
+## Perfil do Google (confirmado no painel — 19/09/2026)
+- Categoria atual: **Serviço de informática**.
+- Nota **5,0** com **84 avaliações**. 380 interações com clientes.
+- **Verificado** — Odara gerencia o Perfil ("Você gerencia este Perfil da Empresa").
+- Endereço no perfil: Centro Empresarial Souza Barros, R. Nicanor Pereira Couto, Vila Nova.
+- Cadastrado desde jan/2025.
+
+## Atendimento (regras)
+- **Sem agendamento online e sem orçamento remoto** — diagnóstico e atendimento são **presenciais**.
+- Nenhum cliente fica sem resposta: a **IA no Meta Business (WhatsApp)** atende e orienta.
+- **Sem cartão de visita físico** — comunicação 100% digital.
+- Marido: **Fabio Lobo** (sobrenome Lobo → identidade do lobo). Ama o azul da marca. Estilo pessoal: tatuagens orientais + traço old school (referência de estética, não obrigatório no site).
