@@ -1,0 +1,464 @@
+<title>Presença Digital Modo Solo</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root{
+    --ground:#F6F5F1; --surface:#FFFFFF; --surface-2:#F0EEE8;
+    --ink:#182226; --muted:#5B6A70; --hair:#E2DFD6; --hair-strong:#CFCBBE;
+    --primary:#0E5563; --primary-soft:#E1EEF0; --primary-ink:#0A3E49;
+    --accent:#B9662E; --accent-soft:#F6E7D9;
+    --ok:#2E7D4F; --ok-soft:#E2F0E7; --warn:#B07A12; --warn-soft:#F7ECD2;
+    --crit:#B33A34; --crit-soft:#F6E0DD;
+    --shadow:0 1px 2px rgba(24,34,38,.05),0 8px 24px rgba(24,34,38,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0F1618; --surface:#161F22; --surface-2:#1D272B;
+      --ink:#E9EFEF; --muted:#95A6AC; --hair:#28343A; --hair-strong:#374750;
+      --primary:#4FB6C6; --primary-ink:#BFE6ED; --primary-soft:#132A30;
+      --accent:#DB9058; --accent-soft:#2A1D12;
+      --ok:#5EC489; --ok-soft:#16281F; --warn:#D6A63E; --warn-soft:#2A2211;
+      --crit:#E27B72; --crit-soft:#2C1614;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0F1618; --surface:#161F22; --surface-2:#1D272B;
+    --ink:#E9EFEF; --muted:#95A6AC; --hair:#28343A; --hair-strong:#374750;
+    --primary:#4FB6C6; --primary-ink:#BFE6ED; --primary-soft:#132A30;
+    --accent:#DB9058; --accent-soft:#2A1D12;
+    --ok:#5EC489; --ok-soft:#16281F; --warn:#D6A63E; --warn-soft:#2A2211;
+    --crit:#E27B72; --crit-soft:#2C1614;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--ground);color:var(--ink);
+    font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:820px;margin:0 auto;padding-inline:20px;padding-block:0 64px}
+  a{color:var(--primary-ink)}
+  h1,h2,h3{font-family:"Archivo",system-ui,sans-serif;text-wrap:balance;line-height:1.15;margin:0}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+
+  /* header */
+  header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;
+    background:color-mix(in srgb,var(--ground) 88%, transparent);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+  .top-in{max-width:820px;margin:0 auto;padding:10px 20px;display:flex;
+    align-items:center;gap:12px;justify-content:space-between}
+  .brandmark{display:flex;align-items:center;gap:9px;min-width:0}
+  .chipdot{width:22px;height:22px;border-radius:6px;flex:none;
+    background:linear-gradient(135deg,var(--primary),var(--accent));
+    box-shadow:inset 0 0 0 1px rgba(255,255,255,.15)}
+  .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .top .ver{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--muted);
+    white-space:nowrap}
+
+  /* hero */
+  .hero{padding-block:34px 20px;border-bottom:1px solid var(--hair)}
+  .kick{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+  h1{font-size:clamp(30px,7vw,46px);font-weight:800;letter-spacing:-.02em;margin-top:10px}
+  .lede{font-size:17px;color:var(--muted);max-width:60ch;margin-top:14px}
+  .metaline{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:18px;
+    font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--muted)}
+  .metaline b{color:var(--ink);font-weight:600}
+
+  section{padding-block:30px;border-bottom:1px solid var(--hair)}
+  .sec-label{display:flex;align-items:baseline;gap:10px;margin-bottom:16px}
+  .sec-num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    color:var(--accent)}
+  h2{font-size:22px;font-weight:700;letter-spacing:-.01em}
+  h3{font-size:15.5px;font-weight:700;margin:22px 0 8px}
+  p{margin:10px 0}
+  .sub{color:var(--muted);font-size:14px;margin-top:2px}
+
+  /* callouts */
+  .box{border:1px solid var(--hair-strong);border-radius:12px;padding:16px 18px;
+    background:var(--surface);box-shadow:var(--shadow);margin:16px 0}
+  .box .bt{font-family:"IBM Plex Mono",monospace;font-size:11px;font-weight:600;
+    letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;
+    gap:8px;margin-bottom:6px}
+  .box.warn{background:var(--warn-soft);border-color:transparent}
+  .box.warn .bt{color:var(--warn)}
+  .box.crit{background:var(--crit-soft);border-color:transparent}
+  .box.crit .bt{color:var(--crit)}
+  .box.tip{background:var(--primary-soft);border-color:transparent}
+  .box.tip .bt{color:var(--primary)}
+  .box.accent{background:var(--accent-soft);border-color:transparent}
+  .box.accent .bt{color:var(--accent)}
+
+  /* legend chips */
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px}
+  @media(max-width:520px){.legend{grid-template-columns:1fr}}
+  .lg{display:flex;gap:11px;align-items:flex-start;background:var(--surface);
+    border:1px solid var(--hair);border-radius:10px;padding:11px 13px}
+  .tag{font-family:"IBM Plex Mono",monospace;font-size:10px;font-weight:600;
+    letter-spacing:.08em;padding:3px 8px;border-radius:6px;white-space:nowrap;flex:none;
+    margin-top:1px}
+  .t-exec{background:var(--primary-soft);color:var(--primary)}
+  .t-dado{background:var(--accent-soft);color:var(--accent)}
+  .t-espera{background:var(--warn-soft);color:var(--warn)}
+  .t-treino{background:var(--surface-2);color:var(--muted)}
+  .lg small{color:var(--muted);font-size:12.5px;line-height:1.45}
+  .lg b{font-size:13px}
+
+  /* map table */
+  .tablewrap{overflow-x:auto;border:1px solid var(--hair);border-radius:12px;
+    background:var(--surface);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;font-size:13.5px;min-width:460px}
+  th,td{text-align:left;padding:11px 14px;border-bottom:1px solid var(--hair);
+    vertical-align:top}
+  thead th{font-family:"IBM Plex Mono",monospace;font-size:10.5px;font-weight:600;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+    background:var(--surface-2)}
+  tbody tr:last-child td{border-bottom:none}
+  td .mono{font-size:12px;color:var(--accent)}
+
+  /* rules list */
+  ol.rules{list-style:none;counter-reset:r;padding:0;margin:8px 0;display:grid;gap:10px}
+  ol.rules li{counter-increment:r;display:flex;gap:13px;background:var(--surface);
+    border:1px solid var(--hair);border-radius:10px;padding:13px 15px}
+  ol.rules li::before{content:counter(r);font-family:"IBM Plex Mono",monospace;
+    font-weight:600;font-size:13px;color:var(--surface);background:var(--primary);
+    width:24px;height:24px;border-radius:6px;display:grid;place-items:center;flex:none}
+  ol.rules b{color:var(--ink)}
+
+  /* step blocks */
+  .step{display:flex;gap:14px;margin:14px 0}
+  .step .id{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+    color:var(--accent);flex:none;width:34px;padding-top:2px}
+  .step .body{flex:1;min-width:0}
+  .step .body p{margin:2px 0}
+  .step-tag{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
+    font-weight:600;letter-spacing:.06em;padding:2px 7px;border-radius:5px;margin-left:8px;
+    vertical-align:middle}
+
+  ul.clean{margin:8px 0;padding-left:18px}
+  ul.clean li{margin:5px 0}
+  .kv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;background:var(--surface-2);
+    padding:1px 6px;border-radius:5px;color:var(--ink)}
+
+  /* checklist */
+  .check{display:grid;gap:8px;margin:12px 0}
+  .check label{display:flex;gap:11px;align-items:flex-start;background:var(--surface);
+    border:1px solid var(--hair);border-radius:9px;padding:11px 13px;cursor:pointer}
+  .check input{margin-top:3px;width:17px;height:17px;accent-color:var(--primary);flex:none}
+  .check label:has(input:checked){background:var(--ok-soft);border-color:transparent}
+  .check label:has(input:checked) span{color:var(--muted);text-decoration:line-through}
+  .check span{font-size:13.5px}
+
+  .fields{display:grid;gap:9px;margin:12px 0}
+  .field{display:flex;gap:12px;background:var(--surface);border:1px solid var(--hair);
+    border-radius:9px;padding:11px 13px;font-size:13.5px}
+  .field .f-k{font-weight:600;flex:none;width:150px}
+  @media(max-width:520px){.field{flex-direction:column;gap:3px}.field .f-k{width:auto}}
+  .field .f-v{color:var(--muted)}
+
+  footer{padding-block:26px 0;color:var(--muted);font-size:12.5px}
+  footer .mono{font-size:11.5px}
+  .src{font-size:12.5px;line-height:1.9}
+  .src a{word-break:break-word}
+  hr.soft{border:none;border-top:1px solid var(--hair);margin:22px 0}
+  .pill{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;
+    font-weight:600;letter-spacing:.06em;padding:3px 8px;border-radius:20px;
+    background:var(--surface-2);color:var(--muted);border:1px solid var(--hair)}
+</style>
+
+<header class="top">
+  <div class="top-in">
+    <div class="brandmark">
+      <span class="chipdot" aria-hidden="true"></span>
+      <span class="eyebrow">SafeFlowAI · Uso interno</span>
+    </div>
+    <span class="ver">v1 · 19/09/2026</span>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kick">Presença Digital · Modo Solo</div>
+    <h1>Você faz tudo. Sozinha.</h1>
+    <p class="lede">O passo a passo de quem executa a presença digital inteira com os dados que já tem em mãos — sem perguntar, sem mediar, sem cliente do outro lado. Modelo montado sobre o caso real do <b>NoteLagos Service</b>, para servir de treino e de padrão.</p>
+    <div class="metaline">
+      <span>Cliente-modelo: <b>NoteLagos Service</b></span>
+      <span>Praça: <b>Centro de Cabo Frio</b></span>
+      <span>Entrega de hoje: <b>Perfil do Google + Site</b></span>
+    </div>
+  </div>
+
+  <!-- DIFERENÇA -->
+  <section>
+    <div class="sec-label"><span class="sec-num">00</span><h2>Por que este material é diferente dos outros dois</h2></div>
+    <p class="sub">Você já tem dois materiais na pasta. Este é um terceiro cenário — e as regras mudam.</p>
+    <div class="tablewrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>Material</th><th>Quem executa</th><th>Regra que manda</th></tr></thead>
+        <tbody>
+          <tr><td><b>Apoio ao cliente</b></td><td>A cliente, com você acompanhando</td><td>Passo a passo com mediação</td></tr>
+          <tr><td><b>Guia da Mediadora</b></td><td>A cliente, na conta dela</td><td>Você conduz, nunca faz no lugar (enquadramento MEI)</td></tr>
+          <tr><td><b>Este — Modo Solo</b></td><td class="mono" style="color:var(--accent)">VOCÊ, em tudo</td><td>Você tem o acesso e a responsabilidade inteira</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="box crit">
+      <div class="bt">⚠ O que NÃO se aplica aqui</div>
+      As regras sagradas do esteira caem neste modo: não existe "a cliente executa", não existe contrato, não existe NFS-e, não existe gate de pagamento. É trabalho de família e treino — você opera as contas dele com o acesso que ele te deu. O que <b>continua valendo</b> está na próxima seção.
+    </div>
+  </section>
+
+  <!-- COMO LER -->
+  <section>
+    <div class="sec-label"><span class="sec-num">01</span><h2>Como ler</h2></div>
+    <p class="sub">Cada passo tem uma etiqueta que diz a natureza dele.</p>
+    <div class="legend">
+      <div class="lg"><span class="tag t-exec">EXECUTA</span><small><b>Você faz agora.</b> Ação sua, na conta dele.</small></div>
+      <div class="lg"><span class="tag t-dado">DADO</span><small><b>Você já tem.</b> Está no perfil atual dele ou no seu bloco de notas do Meta Business.</small></div>
+      <div class="lg"><span class="tag t-espera">ESPERA</span><small><b>Prazo do Google.</b> Não depende de você — só de começar cedo.</small></div>
+      <div class="lg"><span class="tag t-treino">TREINO</span><small><b>Marque onde travou.</b> É o que você entrega pra ele avaliar e o que mede sua evolução.</small></div>
+    </div>
+  </section>
+
+  <!-- REGRAS -->
+  <section>
+    <div class="sec-label"><span class="sec-num">02</span><h2>As regras deste modo</h2></div>
+    <ol class="rules">
+      <li><span><b>Tudo no nome dele.</b> A conta Google dona do perfil, o domínio (no CPF dele), o e-mail, as contas — titular é ele. Você opera, ele é o dono. Nunca ponha nada no seu nome "pra facilitar".</span></li>
+      <li><span><b>Só dado real.</b> O NAP (nome, endereço, telefone) do site tem que ser <b>idêntico</b> ao que já está no Google Maps dele. Não invente endereço, telefone nem horário — copie exato.</span></li>
+      <li><span><b>Sem CNPJ não trava nada.</b> Perfil do Google e site funcionam com CPF. A única coisa que CNPJ destravaria é emitir NFS-e — e aqui não tem nota pra emitir.</span></li>
+      <li><span><b>Nome do perfil = só o nome.</b> Não escreva "conserto de placa-mãe" nem "Cabo Frio" no campo do nome. O Google remove perfis que enfiam serviço ou cidade no nome.</span></li>
+      <li><span><b>Avaliação nunca se compra nem se filtra.</b> Pedir é permitido — pra todo mundo, do mesmo jeito. Comprar ou escolher quem recebe o link é proibido pelo Google.</span></li>
+      <li><span><b>Isto é treino.</b> No fim, marque onde você travou e quanto tempo levou em cada parte. Esse é o retorno real pra ele avaliar e pra você medir onde precisa melhorar.</span></li>
+    </ol>
+  </section>
+
+  <!-- MAPA -->
+  <section>
+    <div class="sec-label"><span class="sec-num">03</span><h2>O mapa em uma página</h2></div>
+    <p class="sub">A ordem importa: <b>Perfil do Google primeiro</b>. É ele que aparece no mapa e rankeia. O site alimenta o perfil (autoridade + link) — um sem o outro rende metade.</p>
+    <div class="tablewrap" style="margin-top:14px">
+      <table>
+        <thead><tr><th>#</th><th>Etapa</th><th>Natureza</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">0</td><td>Reunir os dados que você já tem</td><td><span class="tag t-dado">DADO</span></td></tr>
+          <tr><td class="mono">A</td><td>Perfil do Google — ranquear no mapa</td><td><span class="tag t-exec">EXECUTA</span> <span class="tag t-espera">ESPERA</span></td></tr>
+          <tr><td class="mono">B</td><td>Site — ser escolhido depois de encontrado</td><td><span class="tag t-exec">EXECUTA</span></td></tr>
+          <tr><td class="mono">C</td><td>Amarrar os dois (NAP idêntico + links cruzados)</td><td><span class="tag t-exec">EXECUTA</span></td></tr>
+          <tr><td class="mono">✓</td><td>Revisão, entrega pra ele avaliar, autoavaliação</td><td><span class="tag t-treino">TREINO</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- BLOCO 0 -->
+  <section>
+    <div class="sec-label"><span class="sec-num">04</span><h2>Bloco 0 — Reunir os dados</h2></div>
+    <p>Nada aqui se pergunta pra ninguém. Ou você já tem, ou você copia do que já existe. Junte tudo antes de abrir qualquer ferramenta.</p>
+
+    <h3>O que você já tem definido (do NoteLagos Service)</h3>
+    <div class="box accent">
+      <div class="bt">◆ Diferenciais reais — a espinha de tudo</div>
+      <ul class="clean">
+        <li><b>Microeletrônica / conserto de placa-mãe.</b> É o único na região que faz de verdade — outros dizem que fazem e não fazem. <i>Este é o carro-chefe: é o termo que ninguém mais entrega e o que mais te diferencia na busca.</i></li>
+        <li><b>Velocidade de entrega.</b> Costuma devolver em 24–48h independente da complexidade da peça. Só demora quando depende de uma peça chegar — não da mão de obra dele.</li>
+        <li><b>Localização.</b> Centro de Cabo Frio, em prédio comercial. Ponto fixo e central conta a favor no ranqueamento local e na confiança.</li>
+      </ul>
+    </div>
+
+    <h3>O que copiar EXATO do que já existe</h3>
+    <p class="sub">O perfil do Google Maps dele já está bom. Ele é a fonte da verdade do NAP — o site vai ter que bater com ele letra por letra.</p>
+    <div class="fields">
+      <div class="field"><span class="f-k">Nome exato</span><span class="f-v">Como está escrito no Google Maps hoje (confirmar grafia: "NoteLagos Service"?)</span></div>
+      <div class="field"><span class="f-k">Endereço completo</span><span class="f-v">Rua, número, sala/andar do prédio, bairro, CEP — igual ao Maps</span></div>
+      <div class="field"><span class="f-k">Telefone / WhatsApp</span><span class="f-v">O número público que já atende</span></div>
+      <div class="field"><span class="f-k">Horário real</span><span class="f-v">Dia a dia + feriados. Se fecha almoço, marque</span></div>
+      <div class="field"><span class="f-k">Serviços</span><span class="f-v">Seu bloco de notas do Meta Business — a lista completa do que ele conserta</span></div>
+      <div class="field"><span class="f-k">Fotos</span><span class="f-v">As do Instagram + logo. Ideal: fachada do prédio, bancada, reparos feitos</span></div>
+      <div class="field"><span class="f-k">Acesso ao perfil</span><span class="f-v">Qual conta Google é dona / se já está verificado</span></div>
+    </div>
+    <div class="box tip">
+      <div class="bt">➜ Próximo passo comigo</div>
+      Cola aqui pra mim, preenchido: (1) o <b>bloco de notas com os serviços</b>, (2) o <b>NAP exato</b> copiado do perfil atual e (3) <b>3 nomes de domínio</b> que você queira testar. Com isso eu monto a planilha de otimização do Perfil e o HTML do site já com os dados dele.
+    </div>
+  </section>
+
+  <!-- PARTE A -->
+  <section>
+    <div class="sec-label"><span class="sec-num">05</span><h2>Parte A — Perfil do Google</h2></div>
+    <p class="sub">O ranqueamento local do Google pesa três coisas: <b>relevância</b> (categoria + palavras), <b>distância</b> (do usuário) e <b>destaque</b> (avaliações, atividade, link do site). Você mexe em relevância e destaque.</p>
+
+    <div class="step"><span class="id">A1</span><div class="body">
+      <p><b>Confirmar propriedade e verificação</b><span class="step-tag t-exec" style="background:var(--primary-soft);color:var(--primary)">EXECUTA</span></p>
+      <p class="sub">Entre no Perfil da Empresa pela conta dele. Se ainda não está verificado, <b>comece a verificação já</b> — ela tem prazo do Google (vídeo, telefone ou correspondência). Dispare no início pra o relógio dela correr enquanto você faz o resto.<span class="step-tag t-espera" style="background:var(--warn-soft);color:var(--warn)">ESPERA</span></p>
+    </div></div>
+
+    <div class="step"><span class="id">A2</span><div class="body">
+      <p><b>Categoria principal — o fator nº 1 de relevância</b></p>
+      <p class="sub">É a alavanca mais forte do ranqueamento. Escolha a categoria oficial que o Google oferecer mais próxima de assistência técnica em eletrônica. Prováveis candidatas: <span class="kv">Serviço de conserto de eletrônicos</span> · <span class="kv">Serviço de assistência técnica</span> · <span class="kv">Loja de conserto de eletrônicos</span>.</p>
+      <div class="box warn"><div class="bt">⚠ Valide na fonte</div>Não fixe uma dessas de cabeça — digite no campo de categoria e escolha exatamente o rótulo que o próprio Google listar. O nome varia; use o oficial que aparecer.</div>
+    </div></div>
+
+    <div class="step"><span class="id">A3</span><div class="body">
+      <p><b>Categorias secundárias</b></p>
+      <p class="sub">Adicione as que cobrem os outros serviços do bloco de notas (ex.: conserto de celular, computador, notebook). Cada categoria válida amplia as buscas em que ele aparece — mas só ponha as que ele realmente faz.</p>
+    </div></div>
+
+    <div class="step"><span class="id">A4</span><div class="body">
+      <p><b>Nome</b></p>
+      <p class="sub">Só o nome real do negócio. Sem "conserto de placa-mãe", sem "Cabo Frio". Regra 4 — o Google remove.</p>
+    </div></div>
+
+    <div class="step"><span class="id">A5</span><div class="body">
+      <p><b>NAP + descrição (até 750 caracteres)</b></p>
+      <p class="sub">Endereço, telefone e horário idênticos ao que vai no site. Na descrição, escreva com as palavras que o cliente digita — abra com o diferencial: microeletrônica e conserto de placa-mãe, depois a rapidez de entrega, depois a localização no centro.</p>
+    </div></div>
+
+    <div class="step"><span class="id">A6</span><div class="body">
+      <p><b>Serviços</b></p>
+      <p class="sub">Cadastre cada serviço do bloco de notas com uma descrição curta. É mais superfície de palavra-chave e ajuda o cliente a se reconhecer.</p>
+    </div></div>
+
+    <div class="step"><span class="id">A7</span><div class="body">
+      <p><b>Área de atendimento</b></p>
+      <p class="sub">Ele atende no balcão do prédio comercial → mantenha como endereço físico (aparece no mapa). Se também busca/entrega peça, adicione as cidades de cobertura.</p>
+    </div></div>
+
+    <div class="step"><span class="id">A8</span><div class="body">
+      <p><b>Fotos</b></p>
+      <p class="sub">Logo, fachada/prédio, bancada de trabalho, reparos feitos (placas, peças). Foto real e atual é sinal de destaque. Puxe do Instagram o que já existe.</p>
+    </div></div>
+
+    <div class="step"><span class="id">A9</span><div class="body">
+      <p><b>Perguntas frequentes (Q&A)</b></p>
+      <p class="sub">Semeie 5 perguntas que o cliente faz — "conserta placa-mãe de notebook?", "qual o prazo?", "faz orçamento?" — e responda você mesma pela conta dele.</p>
+    </div></div>
+
+    <div class="step"><span class="id">A10</span><div class="body">
+      <p><b>Avaliações</b></p>
+      <p class="sub">Pegue o link direto de avaliação e mande pros clientes reais — todos, do mesmo jeito. Responda cada avaliação (boa e ruim). Nunca compre, nunca filtre (regra 5).</p>
+    </div></div>
+
+    <div class="step"><span class="id">A11</span><div class="body">
+      <p><b>Posts / novidades</b></p>
+      <p class="sub">Publicar de vez em quando (um reparo, um prazo batido) mantém o perfil "vivo" — atividade recente conta no destaque.</p>
+    </div></div>
+  </section>
+
+  <!-- PARTE B -->
+  <section>
+    <div class="sec-label"><span class="sec-num">06</span><h2>Parte B — Site</h2></div>
+    <p class="sub">Uma landing de uma página. Papel: converter quem já encontrou ele no Google, e devolver autoridade pro perfil.</p>
+
+    <div class="step"><span class="id">B1</span><div class="body">
+      <p><b>Hospedagem e domínio</b> <span class="pill">decisão a confirmar</span></p>
+      <p class="sub">Recomendação: <b>Cloudflare Pages</b> (grátis, HTTPS incluso, rápido) + domínio no <b>registro.br no CPF dele</b> (~R$ 40/ano; registro.br aceita CPF de pessoa física, sem CNPJ). Nome do domínio: teste 3 opções na busca do registro.br — não dá pra garantir disponibilidade sem checar lá.</p>
+      <div class="box warn"><div class="bt">⚠ Me confirme antes</div>Se ele já tiver um construtor em uso (Wix, Hostgator, Google Sites), eu adapto. Se não, seguimos no Cloudflare Pages — que é também o melhor cenário de treino, porque você aprende o deploy real.</div>
+    </div></div>
+
+    <div class="step"><span class="id">B2</span><div class="body">
+      <p><b>Estrutura da página</b></p>
+      <ul class="clean">
+        <li><b>Dobra 1:</b> nome + o que ele faz + a promessa (placa-mãe que ninguém mais entrega + devolução em 24–48h) + botão de WhatsApp.</li>
+        <li><b>Serviços</b> — do bloco de notas.</li>
+        <li><b>Diferenciais</b> — os 3 da seção 04.</li>
+        <li><b>Prova</b> — avaliações do Google + fotos de reparos.</li>
+        <li><b>Localização</b> — mapa + endereço (NAP idêntico) + horário.</li>
+        <li><b>FAQ</b> — as mesmas 5 do perfil.</li>
+        <li><b>Rodapé</b> — NAP + link do Perfil do Google + Instagram.</li>
+      </ul>
+    </div></div>
+
+    <div class="step"><span class="id">B3</span><div class="body">
+      <p><b>SEO na página</b></p>
+      <p class="sub"><span class="kv">title</span> e <span class="kv">meta description</span> com o termo de busca; <span class="kv">H1</span> tipo "Conserto de placa-mãe em Cabo Frio"; dados estruturados <span class="kv">LocalBusiness</span> (schema.org) com o NAP; texto alternativo em cada imagem. Isso eu escrevo pra você quando montar o HTML.</p>
+    </div></div>
+
+    <div class="step"><span class="id">B4</span><div class="body">
+      <p><b>Publicar</b></p>
+      <p class="sub">Subir no Cloudflare Pages e apontar o domínio. Passo a passo detalhado quando fecharmos a hospedagem.</p>
+    </div></div>
+
+    <div class="step"><span class="id">B5</span><div class="body">
+      <p><b>Search Console</b></p>
+      <p class="sub">Registrar o site no Google Search Console (conta dele) pra ele ser indexado e você acompanhar as buscas que trazem visita.</p>
+    </div></div>
+  </section>
+
+  <!-- PARTE C -->
+  <section>
+    <div class="sec-label"><span class="sec-num">07</span><h2>Parte C — Amarrar os dois</h2></div>
+    <p class="sub">É aqui que 1 + 1 vira 3. Consistência é sinal de ranqueamento local.</p>
+    <ul class="clean">
+      <li><b>Link do site</b> no campo de site do Perfil do Google.</li>
+      <li><b>NAP idêntico</b> nos três lugares: Perfil do Google, site e bio do Instagram. Mesma grafia, mesmo telefone, mesmo endereço.</li>
+      <li><b>Links cruzados:</b> bio do Instagram aponta pro site; site linka o Instagram e o Perfil do Google.</li>
+    </ul>
+  </section>
+
+  <!-- FECHO -->
+  <section>
+    <div class="sec-label"><span class="sec-num">08</span><h2>Fecho — entrega e treino</h2></div>
+
+    <h3>Checklist de revisão <span class="pill">salva sozinho neste dispositivo</span></h3>
+    <div class="check" id="checklist">
+      <label><input type="checkbox" id="c1"><span>Perfil verificado (ou verificação em andamento com data anotada)</span></label>
+      <label><input type="checkbox" id="c2"><span>Categoria principal oficial escolhida + secundárias</span></label>
+      <label><input type="checkbox" id="c3"><span>Nome sem serviço/cidade · NAP conferido</span></label>
+      <label><input type="checkbox" id="c4"><span>Descrição, serviços, fotos e 5 Q&A publicados</span></label>
+      <label><input type="checkbox" id="c5"><span>Link de avaliação em circulação · respostas prontas</span></label>
+      <label><input type="checkbox" id="c6"><span>Site no ar, HTTPS ok, NAP idêntico ao perfil</span></label>
+      <label><input type="checkbox" id="c7"><span>Schema LocalBusiness + Search Console configurados</span></label>
+      <label><input type="checkbox" id="c8"><span>Links cruzados (perfil ⇄ site ⇄ Instagram)</span></label>
+    </div>
+
+    <h3>O que mostrar pra ele avaliar</h3>
+    <ul class="clean">
+      <li>O perfil no mapa (antes/depois do que mudou).</li>
+      <li>O site no ar, no domínio dele.</li>
+      <li>Uma busca real ("conserto de placa-mãe Cabo Frio") e onde ele aparece.</li>
+    </ul>
+
+    <div class="box accent">
+      <div class="bt">◆ Autoavaliação (treino)</div>
+      Anote, honestamente: <b>onde travou</b>, <b>quanto tempo</b> levou cada parte, e <b>o que teve que pesquisar</b>. É esse registro que vira sua próxima melhoria — e o que mostra pra ele que você fez sozinha.
+    </div>
+  </section>
+
+  <!-- FONTES -->
+  <footer>
+    <p class="mono" style="letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:600">Fontes oficiais</p>
+    <div class="src">
+      Perfil da Empresa no Google — <a href="https://support.google.com/business/">support.google.com/business</a><br>
+      Diretrizes de nome do perfil — <a href="https://support.google.com/business/answer/3038177">support.google.com/business/answer/3038177</a><br>
+      Cloudflare Pages — <a href="https://pages.cloudflare.com/">pages.cloudflare.com</a><br>
+      Registro de domínio (CPF) — <a href="https://registro.br/">registro.br</a><br>
+      Google Search Console — <a href="https://search.google.com/search-console">search.google.com/search-console</a><br>
+      Dados estruturados LocalBusiness — <a href="https://schema.org/LocalBusiness">schema.org/LocalBusiness</a>
+    </div>
+    <hr class="soft">
+    <p>Onde este guia diz "recomendação" ou "provável", é escolha minha e você valida na fonte antes de publicar — nunca fixe categoria do Google nem disponibilidade de domínio de cabeça.</p>
+    <p class="mono">SafeFlowAI · Presença Digital · Modo Solo · v1 · 19/09/2026 · modelo NoteLagos Service</p>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var KEY="ppd-solo-checklist";
+    var boxes=document.querySelectorAll('#checklist input[type=checkbox]');
+    try{
+      var saved=JSON.parse(localStorage.getItem(KEY)||"{}");
+      boxes.forEach(function(b){ if(saved[b.id]) b.checked=true; });
+    }catch(e){}
+    function save(){
+      try{
+        var s={};
+        boxes.forEach(function(b){ if(b.checked) s[b.id]=1; });
+        localStorage.setItem(KEY,JSON.stringify(s));
+      }catch(e){}
+    }
+    boxes.forEach(function(b){ b.addEventListener('change',save); });
+  })();
+</script>
