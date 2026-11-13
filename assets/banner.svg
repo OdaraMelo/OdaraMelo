@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="Odara Ramôa, AI operations and evaluation">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8A5CFF"/><stop offset="1" stop-color="#5CE1E6"/></linearGradient>
+    <radialGradient id="glow" cx="0.82" cy="0.1" r="0.7"><stop offset="0" stop-color="#8A5CFF" stop-opacity="0.35"/><stop offset="1" stop-color="#070B14" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="300" fill="#070B14"/>
+  <rect width="1200" height="300" fill="url(#glow)"/>
+  <rect x="80" y="214" width="120" height="4" rx="2" fill="url(#g)"/>
+  <text x="80" y="150" font-family="'Instrument Serif', Georgia, 'Times New Roman', serif" font-size="84" fill="#F5F3EF">Odara Ramôa</text>
+  <text x="80" y="196" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-style="italic" fill="#C5A86E">AI operations · evaluation · automation</text>
+  <text x="80" y="256" font-family="Arial, Helvetica, sans-serif" font-size="20" letter-spacing="3" fill="#9AA3B8">PORTUGUESE (BR) · ENGLISH · REMOTE SINCE 2020</text>
+</svg>
